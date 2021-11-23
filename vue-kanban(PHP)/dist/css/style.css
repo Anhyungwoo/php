@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+/** 공통 */
+* {
+    box-sizing: border-box;
+    transition: all 1s;
+    outline: none;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+html {
+    font-size: 13px;
+}
+body {
+    margin: 0;
+    color: #212121;
+    background: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: #212121;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.dn {
+    display: none !important;
+}
+
+input[type='text'],
+input[type='password'] {
+    width: 100%;
+    height: 55px;
+    font-size: 1.35rem;
+    border: 1px solid #b5deff;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    padding: 0 15px;
+    background-color: #ebf7fc;
+}
+
+input[type='text']:hover,
+input[type='password']:hover {
+    background-color: #a8c6d4;
+}
+
+input[type='submit'] {
+    width: 100%;
+    height: 55px;
+    margin: 25px 0;
+    font-size: 1.35rem;
+    background-color: #85a2ff;
+    color: #ffffff;
+    border: 0;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.stit {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/**  app.vue */
+#app {
+    padding: 80px 10px 0;
+}
+#nav {
+ background-color: #85a2ff;
+ text-align: left;
+ padding: 10px;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ z-index: 10;
+}
+#nav i {
+    font-size: 2.3rem;
+    color: #ffffff;
+    vertical-align: middle;
+}
+#nav a {
+    padding: 5px;
+}
+
+#nav a:first-of-type {
+    float: left;
+}
+
+#nav .right {
+    float: right;
+}
+
+#nav:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#nav .right a:last-of-type,
+#nav .right a:nth-child(2) {
+    position: relative;
+    top: 5px;
+}
+
+/** components/PageTitle.vue */
+.page_title {
+    font-size: 2.5rem;
+    text-shadow:#090e1a 1px 1px 1px;
+}
+
+/** views/List.vue */
+.add_work {
+    display: block;
+    width: 100%;
+    height: 55px;
+    background: #212121;
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 55px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+/** components/List.vue */
+.work_list {
+    margin: 15px 0 50px;
+}
+
+.work_list li {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 15px 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #212121;
+    font-weight: bold;
+}
+
+/** views/View.vue */
+.work_view {
+    background:#ffffff;
+    padding: 20px 15px;
+    border-radius: 3px;
+}
+.work_view dl {
+    display: table; width: 100%;
+    border-bottom: 1px solid #d5d5d5;
+    padding-bottom: 15px;
+}
+
+.work_view dl:last-of-type {
+    border-bottom: 0;
+}
+
+.work_view dt {
+    display: table-cell;
+    vertical-align: middle;
+    width: 80px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.work_view dd {
+    display: table-cell;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+
+.work_view .content {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.work_view .btns button {
+    width: calc(100% / 4);
+    height: 40px;
+    border-radius: 0;
+    border: 0;
+    color: #ffffff;
+}
+.work_view .btns button:nth-child(1) {
+    background:blue;
+}
+.work_view .btns button:nth-child(2) {
+    background: green;
+}
+.work_view .btns button:nth-child(3) {
+    background: red;
+}
+.work_view .btns button:nth-child(4) {
+    background: #212121;
+}
+
+/** components/Form.vue */
+#frmKanban dl {
+    padding: 0;
+    margin: 0 0 25px;
+}
+#frmKanban dt {
+    padding: 10px;
+    margin: 0;
+    background:#212121;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#frmKanban dd {
+    padding: 0;
+    margin: 0;
+}
+
+#frmKanban textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    resize: none;
+}
+
+#frmKanban input[type='radio'] {
+    display: none;
+}
+#frmKanban input[type='radio']+label {
+    display: inline-block;
+    border: 1px solid #000000;
+    background: #ffffff;
+    padding: 10px 25px;
+    margin: 0 2px;
+    border-radius: 18px;
+    font-size: 1.1rem;
+}
+
+#frmKanban input[type='radio']:checked+label {
+    background: #000000;
+    color: #ffffff;
+}
