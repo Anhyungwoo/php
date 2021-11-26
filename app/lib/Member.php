@@ -37,7 +37,7 @@ class Member {
 		$stmt->bindValue(":memPw", $hash);
 		$stmt->bindValue(":memNm", $data['memNm']);
 		$stmt->bindValue(":cellPhone", $cellPhone);
-		$result = $stmt->execute();
+		$result = $stmt->execute(); // true, false
 		if (!$result) { // SQL 실행 실패 -> SQL 오류
 			$errorInfo = $this->db->errorInfo();
 			throw new Exception(implode("/", $errorInfo));
@@ -70,8 +70,6 @@ class Member {
 		/** 휴대전화번호 형식 체크 */
 		$this->checkCellPhone($data['cellPhone']);
 
-		$cellPhone = $data['cellPhone']?preg_match("/[^0-9]/", "", $data['cellPhone']):"";
-
 		$addSet = $hash = "";
 		if ($data['memPw']) {
 			$hash = password_hash($data['memPw'], PASSWORD_BCRYPT, ["cost" => 10]);
@@ -98,7 +96,7 @@ class Member {
 			throw new Exception(implode("/", $errorInfo));
 		}
 
-		return true;
+		return $result;
 	}
 
 	/** 로그인 처리 */
@@ -149,7 +147,7 @@ class Member {
 		];
 
 		foreach ($required as $key => $msg) {
-			if (!isset($data[$key]) || ($data[$key] && trim($data[$key]) == "")) {
+			if (!isset($data[$key]) || trim($data[$key]) == "") {
 				throw new Exception($msg);
 			}
 		}
@@ -161,8 +159,8 @@ class Member {
 		}
 
 		// 아이디가 알파벳, 숫자로만 구성
-		if (preg_match("/[^0-9a-z]/i", $memId)) { // 숫자 + 알파벳이 아닌 문자가 포함되어 있으면 true
-			throw new Exception("아이디는 알파벳과 숫자로만 입력하세요.");
+	  if (!preg_match("/[0-9]/", $memId) || !preg_match("/[a-z]/i", $memId)) { // 숫자 + 알파벳이 아닌 문자가 포함되어 있으면 true
+			throw new Exception("아이디는 알파벳과 숫자를 조합하여 입력하세요.");
 		}
 		/** 아이디 체크 E */
 
@@ -236,7 +234,7 @@ class Member {
 
 		$sql = "SELECT * FROM member WHERE {$field} = :{$field}";
 		$stmt = $this->db->prepare($sql);
-		$stmt->bindValue(":{$field}", $memNo, PDO::PARAM_INT);
+		$stmt->bindValue(":{$field}", $memNo, is_numeric($memNo)?PDO::PARAM_INT :PDO::PARAM_STR);
 		$result = $stmt->execute(); // true, false
 		if (!$result) {
 			$errorInfo = $this->db->errorInfo();

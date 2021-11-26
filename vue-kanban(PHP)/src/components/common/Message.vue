@@ -43,7 +43,7 @@ export default {
 .message_popup .tit {
     font-size: 1.5rem;
     font-weight: bold;
-    padding-bottom: 10px; 
+    padding-bottom: 10px;
     border-bottom: 2px solid #000000;
     margin-bottom: 15px;
 }
@@ -63,7 +63,7 @@ export default {
     cursor: pointer;
 }
 
-.message_popup .message { 
+.message_popup .message {
     font-size: 1.2rem;
     height: 60px;
     padding: 10px 0;

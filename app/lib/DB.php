@@ -12,7 +12,7 @@ class DB extends PDO {
 			$username = "anstar94";
 			$password = "guddn@1994";
 			parent::__construct($dsn, $username, $password);
-			
+
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 			exit;

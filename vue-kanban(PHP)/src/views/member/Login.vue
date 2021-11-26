@@ -4,6 +4,7 @@
         <input type="text" name="memId" placeholder="아이디" v-model="memId"><br>
         <input type="password" name="memPw" placeholder="비밀번호" v-model="memPw"><br>
         <input type="submit" value="로그인">
+        <router-link to = "/join" ><input type = "button" value = "회원가입"></router-link>
     </form>
     <MessagePopup ref='popup' :message="message" />
 </template>
